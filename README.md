@@ -25,26 +25,5 @@ This project demonstrates a **Spring Boot 3.2** based **OAuth2 Authorization Ser
 - 🧪 Secure token exchange with `/token` and `/introspect`
 - 🗂️ Extensible for DB-based authentication
 
-## 🔐 Sample Roles
-
-- 👤 `user` with password `user`
-- 👑 `admin` with password `admin`
-
-## ⚙️ How to Run
-
-### 🧬 Prerequisites
-
-- Java 17
-- Maven 3.8+
-
-### 🏃 Run the App
-
-```bash
-# Clone the repo
-git clone https://github.com/your-username/oauth2-webflux.git
-cd oauth2-webflux
-
-# Run the app
-./mvnw spring-boot:run
 
 
