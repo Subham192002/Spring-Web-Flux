@@ -15,6 +15,7 @@ public class AdminController {
     @GetMapping("/dashboard")
     @PreAuthorize("hasRole('ADMIN')")
     public Mono<String> dashboard() {
+        log.info("Working");
         return Mono.just("Hello ADMIN!");
     }
 }
