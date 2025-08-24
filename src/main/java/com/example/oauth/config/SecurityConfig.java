@@ -95,7 +95,8 @@ public class SecurityConfig {
                 .header("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 .bodyValue("token=" + token)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
+                .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {
+                })
                 .flatMap(attributes -> {
                     if (!(Boolean) attributes.getOrDefault("active", false)) return Mono.empty();
 
@@ -117,9 +118,20 @@ public class SecurityConfig {
                     );
 
                     return Mono.just(new OAuth2AuthenticatedPrincipal() {
-                        @Override public Map<String, Object> getAttributes() { return claims; }
-                        @Override public Collection<? extends GrantedAuthority> getAuthorities() { return roles; }
-                        @Override public String getName() { return username; }
+                        @Override
+                        public Map<String, Object> getAttributes() {
+                            return claims;
+                        }
+
+                        @Override
+                        public Collection<? extends GrantedAuthority> getAuthorities() {
+                            return roles;
+                        }
+
+                        @Override
+                        public String getName() {
+                            return username;
+                        }
                     });
                 });
     }
