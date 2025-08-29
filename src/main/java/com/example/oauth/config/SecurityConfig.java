@@ -49,6 +49,12 @@ public class SecurityConfig {
     @Value("${app.admin.password}")
     private String adminPassword;
 
+    @Value("${app.emp.username}")
+    private String empUserName;
+
+    @Value("${app.emp.password}")
+    private String empPassword;
+
     @Value("${app.introspection-url}")
     private String introspectionUrl;
 
@@ -69,7 +75,12 @@ public class SecurityConfig {
                 .roles("ADMIN")
                 .build();
 
-        return new MapReactiveUserDetailsService(user, admin);
+        UserDetails emp = User.withUsername(empUserName)
+                .password(encoder.encode(empPassword))
+                .roles("EMPLOYEE")
+                .build();
+
+        return new MapReactiveUserDetailsService(user, admin,emp);
     }
 
     @Bean
@@ -107,6 +118,7 @@ public class SecurityConfig {
                     List<GrantedAuthority> roles = switch (username) {
                         case "admin" -> List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
                         case "user" -> List.of(new SimpleGrantedAuthority("ROLE_USER"));
+                        case "employee"-> List.of(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
                         default -> List.of();
                     };
 
