@@ -27,19 +27,20 @@ This project demonstrates a **Spring Boot 3.2** based **OAuth2 Authorization Ser
 
 ## 🧪 API Endpoints
 
-| Method | Endpoint                   | Auth Required | Role    | Description                     |
-|--------|----------------------------|----------------|---------|---------------------------------|
-| POST   | `/custom-auth/token`       | ❌             | -       | Generate access token           |
-| POST   | `/custom-auth/introspect`  | ❌             | -       | Token introspection (for resource server) |
-| GET    | `/api/user/dashboard`      | ✅             | `USER`  | Accessible to USER role         |
-| GET    | `/api/admin/dashboard`     | ✅             | `ADMIN` | Accessible to ADMIN role        |
-
+| Method | Endpoint                  | Auth Required | Role       | Description                               |
+|--------|---------------------------|----------------|------------|-------------------------------------------|
+| POST   | `/custom-auth/token`      | ❌             | -          | Generate access token                     |
+| POST   | `/custom-auth/introspect` | ❌             | -          | Token introspection (for resource server) |
+| GET    | `/api/user/dashboard`     | ✅             | `USER`     | Accessible to USER role                   |
+| GET    | `/api/admin/dashboard`    | ✅             | `ADMIN`    | Accessible to ADMIN role                  |
+| GET    | `/api/employee`           | ✅             | `EMPLOYEE` | Accessible to EMPLOYEE role               |
 ---
 
 ## 🔐 Sample Roles
 
 - 👤 `user` with password `user`
 - 👑 `admin` with password `admin`
+- 👤 `employee` with password `employee`
 
 Default users are defined in the in-memory configuration. You can later extend this with a DB-based approach (see below).
 
